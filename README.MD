@@ -1,3 +1,3 @@
 # Expense Architecture
 
-![alt text](expense-infra-dev.svg)
+![alt text](expense-infra-dev.drawio.svg)
