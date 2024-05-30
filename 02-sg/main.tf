@@ -194,9 +194,17 @@ resource "aws_security_group_rule" "web_alb_public" {
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = module.frontend.sg_id
+  security_group_id = module.web_alb.sg_id
 }
 
+resource "aws_security_group_rule" "web_alb_public_https" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = module.web_alb.sg_id
+}
 
 resource "aws_security_group_rule" "bastion_public" {
   type              = "ingress"
@@ -206,4 +214,14 @@ resource "aws_security_group_rule" "bastion_public" {
   cidr_blocks = ["0.0.0.0/0"]
   security_group_id = module.bastion.sg_id
 }
+
+resource "aws_security_group_rule" "frontend_public" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = module.frontend.sg_id
+}
+
 
