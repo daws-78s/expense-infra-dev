@@ -68,6 +68,10 @@
     desc: web alb accepting connections from public
     source: public
     port: 80
+  - name: web_alb_public_https
+    desc: web alb accepting connections from public
+    source: public
+    port: 443
   vpn:
   - name: vpn_public
     desc: vpn accepting connections from public

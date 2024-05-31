@@ -215,13 +215,14 @@ resource "aws_security_group_rule" "bastion_public" {
   security_group_id = module.bastion.sg_id
 }
 
-resource "aws_security_group_rule" "frontend_public" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = module.frontend.sg_id
-}
+# not required, we can connect from VPN
+# resource "aws_security_group_rule" "frontend_public" {
+#   type              = "ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"
+#   cidr_blocks = ["0.0.0.0/0"]
+#   security_group_id = module.frontend.sg_id
+# }
 
 
